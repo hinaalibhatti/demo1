@@ -1,0 +1,26 @@
+#include <iostream>
+
+int main() {
+    int userInput;
+    const int minRange = 1;
+    const int maxRange = 100;
+
+    while (true) {
+        std::cout << "Enter an integer between " << minRange << " and " << maxRange << ": ";
+        if (std::cin >> userInput) {
+            if (userInput >= minRange && userInput <= maxRange) {
+                break; // Input is valid, exit the loop
+            } else {
+                std::cout << "Invalid input. Please enter a valid integer within the specified range." << std::endl;
+            }
+        } else {
+            std::cin.clear(); // Clear error flags
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear input buffer
+            std::cout << "Invalid input. Please enter a valid integer within the specified range." << std::endl;
+        }
+    }
+
+    std::cout << "You entered a valid integer: " << userInput << std::endl;
+
+    return 0;
+}
